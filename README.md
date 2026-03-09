@@ -14,10 +14,10 @@
 
 ## 安装
 
-1. 将 `SKILL.md` 文件复制到 Claude Code 的 skills 目录：
+1. 将全部文件复制到 Claude Code 的 skills 的对应子目录：
    ```bash
    mkdir -p ~/.claude/skills/mob-programming
-   cp SKILL.md ~/.claude/skills/mob-programming/
+   cp * ~/.claude/skills/mob-programming/
    ```
 
 2. 重启 Claude Code 或在设置中刷新 skills
