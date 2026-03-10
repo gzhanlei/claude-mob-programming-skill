@@ -1,7 +1,5 @@
 # Claude Mob Programming Skill
 
-[![GitHub](https://img.shields.io/badge/GitHub-Public-blue)](https://github.com/gzhanlei/claude-mob-programming-skill)
-
 一个用于 [Claude Code](https://claude.ai/code) 的 Mob Programming Skill，组建三人开发团队进行 TDD（测试驱动开发）。
 
 ## 简介
@@ -10,21 +8,25 @@
 
 - **Turing** - 单元测试专家，负责编写测试方案和测试代码
 - **Jobs** - 资深架构师，负责审查所有方案和代码
-- **Thompson** - 生产代码专家，负责编写实现代码
+- **Thompson** - 生产代码专家，负责执行测试和编写实现代码
 
 ## 安装
 
-1. 将全部文件复制到 Claude Code 的 skills 的对应子目录：
-   ```bash
-   mkdir -p ~/.claude/skills/mob-programming
-   cp * ~/.claude/skills/mob-programming/
-   ```
+技能文件位于 `~/.claude/skills/mob-programming/`，结构如下：
 
-2. 重启 Claude Code 或在设置中刷新 skills
+```
+mob-programming/
+├── SKILL.md           # 技能定义和主逻辑
+├── README.md          # 本文档
+└── agents/            # 团队成员角色定义
+    ├── turing.md      # 单元测试专家
+    ├── jobs.md        # 架构师/审查者
+    └── thompson.md    # 生产代码专家
+```
 
 ## 使用方法
 
-在 Claude Code 中使用以下命令：
+在 Claude Code 中输入：
 
 ```
 /mob-programming
@@ -39,16 +41,26 @@
 ## 开发流程
 
 ```
-Turing (写测试方案) → Jobs (审查) → Turing (写测试代码) → Jobs (审查) 
-→ Thompson (执行测试/写生产代码) → Jobs (审查) → 完成 ✅
+任务拆解 → Turing 测试方案 → Jobs 审查 → Turing 测试代码 → Jobs 审查
+    ↓
+Thompson 执行测试 (RED) → 生产方案 → Jobs 审查 → 生产代码 → Jobs 审查
+    ↓
+子任务完成 → 继续下一任务
 ```
 
 ## 原则
 
 - **TDD**: 先写测试，后写实现
 - **SOLID**: 遵循 SOLID 设计原则
-- **迭代审查**: 每个阶段都经过 Jobs 的严格审查
-- **静默等待**: 团队成员通过 SendMessage 通信，无需轮询
+- **迭代审查**: 每个阶段都经过 Jobs 的审查
+- **任务跟踪**: 使用 TaskCreate/TaskUpdate 跟踪进度
+
+## 团队协作机制
+
+- **主 Agent**: 负责任务拆解和流程协调
+- **子 Agent**: 使用 Agent 工具启动，各司其职
+- **通信**: 使用 SendMessage 工具在成员间传递消息
+- **进度**: 使用 Task 系统跟踪每个子任务的状态
 
 ## 许可证
 
