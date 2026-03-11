@@ -1,0 +1,91 @@
+{
+  "skill_name": "mob-programming",
+  "description": "评估 mob-programming 技能的触发准确性和团队协作流程",
+  "evals": [
+    {
+      "id": "trigger_tdd_keyword",
+      "name": "TDD关键词触发测试",
+      "prompt": "帮我用TDD实现一个计算器功能",
+      "expected_behavior": "触发mob-programming技能，开始任务拆解并启动Turing",
+      "assertions": [
+        "触发技能",
+        "拆解任务",
+        "启动Turing Agent"
+      ]
+    },
+    {
+      "id": "trigger_mob_keyword",
+      "name": "Mob Programming关键词触发测试",
+      "prompt": "启动mob programming团队帮我开发一个用户登录功能",
+      "expected_behavior": "立即触发技能，不需要额外确认",
+      "assertions": [
+        "直接触发",
+        "不需要询问"
+      ]
+    },
+    {
+      "id": "trigger_team_keyword",
+      "name": "团队协作关键词触发测试",
+      "prompt": "组建一个开发团队帮我重构这段代码",
+      "expected_behavior": "触发技能并开始流程",
+      "assertions": [
+        "触发技能"
+      ]
+    },
+    {
+      "id": "task_breakdown",
+      "name": "任务拆解能力测试",
+      "prompt": "帮我用TDD实现一个电商订单系统，包括创建订单、支付、退款功能",
+      "expected_behavior": "将大任务拆解为4-6个可管理的子任务",
+      "assertions": [
+        "创建任务列表",
+        "子任务数量合理",
+        "每个子任务有明确边界"
+      ]
+    },
+    {
+      "id": "agent_coordination",
+      "name": "Agent协调流程测试",
+      "prompt": "用TDD实现一个简单的字符串反转函数",
+      "expected_behavior": "按正确顺序启动Turing→Jobs→Thompson→Jobs",
+      "assertions": [
+        "Turing先编写测试",
+        "Jobs审查测试",
+        "Thompson实现代码",
+        "Jobs最终审查"
+      ]
+    },
+    {
+      "id": "progress_tracking",
+      "name": "进度跟踪测试",
+      "prompt": "帮我用TDD开发一个待办事项应用",
+      "expected_behavior": "使用TaskCreate/TaskUpdate跟踪进度，定期向用户汇报",
+      "assertions": [
+        "创建任务列表",
+        "更新任务状态",
+        "向用户汇报进度"
+      ]
+    },
+    {
+      "id": "fast_mode",
+      "name": "快速模式测试",
+      "prompt": "用TDD实现一个功能，快点不需要审查",
+      "expected_behavior": "进入快速模式，跳过中间审查步骤",
+      "assertions": [
+        "警告用户",
+        "调整流程",
+        "Jobs最终审查"
+      ]
+    },
+    {
+      "id": "error_handling",
+      "name": "错误处理测试",
+      "prompt": "启动mob programming",
+      "expected_behavior": "询问用户要开发什么功能",
+      "assertions": [
+        "不直接启动",
+        "询问功能描述"
+      ]
+    }
+  ]
+}
