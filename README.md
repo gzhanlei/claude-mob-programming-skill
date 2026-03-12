@@ -19,9 +19,9 @@ mob-programming/
 ├── SKILL.md           # 技能定义和主逻辑
 ├── README.md          # 本文档
 └── agents/            # 团队成员角色定义
-    ├── turing.md      # 单元测试专家
-    ├── jobs.md        # 架构师/审查者
-    └── thompson.md    # 生产代码专家
+    ├── turing.md      # 单元测试专家 （向Alan Turing致敬）
+    ├── jobs.md        # 架构师/审查者 （向Steve Jobs致敬）
+    └── thompson.md    # 生产代码专家 （向Ken Thompson致敬）
 ```
 
 ## 使用方法
@@ -37,6 +37,11 @@ mob-programming/
 ```
 实现一个用户认证模块，包含登录、注册、密码重置功能
 ```
+
+## 结对编程
+
+你可以使用“启动pair programming团队，完成……任务”来启动结对编程团队。该团队由两位agent组成，一位负责实现，一位负责审查。这个方式中，Job负责审查，Thompson负责实现。
+'''
 
 ## 开发流程
 
