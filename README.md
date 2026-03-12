@@ -6,7 +6,7 @@
 
 这个 skill 创建一个虚拟的 Mob Programming 团队，包括：
 
-- **Turing** - 单元测试专家，负责编写测试方案和测试代码
+- **Cunningham** - 单元测试专家，负责编写测试方案和测试代码
 - **Jobs** - 资深架构师，负责审查所有方案和代码
 - **Thompson** - 生产代码专家，负责执行测试和编写实现代码
 
@@ -19,7 +19,7 @@ mob-programming/
 ├── SKILL.md           # 技能定义和主逻辑
 ├── README.md          # 本文档
 └── agents/            # 团队成员角色定义
-    ├── turing.md      # 单元测试专家 （向Alan Turing致敬）
+    ├── cunningham.md      # 单元测试专家 （向Ward Cunningham致敬）
     ├── jobs.md        # 架构师/审查者 （向Steve Jobs致敬）
     └── thompson.md    # 生产代码专家 （向Ken Thompson致敬）
 ```
