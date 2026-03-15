@@ -1090,17 +1090,23 @@ test('add two numbers', () => {
 ```
 Step 1: Cunningham 编写实际测试代码（可运行）
    ↓
-Step 2: Lead 确认测试文件存在，分配给 Thompson
+Step 2: Cunningham 通知 Lead "测试已完成，文件路径：xxx"
    ↓
-Step 3: Thompson 运行测试 → 确认失败（RED）
+Step 3: Lead 转发通知给 Thompson："Cunningham 测试完成，请开始实现"
    ↓
-Step 4: Thompson 编写最简实现 → 测试通过（GREEN）
+Step 4: Thompson 运行测试 → 确认失败（RED）
    ↓
-Step 5: Thompson 重构优化（IMPROVE）
+Step 5: Thompson 编写最简实现 → 测试通过（GREEN）
    ↓
-Step 6: Cunningham 验证所有测试通过
+Step 6: Thompson 通知 Lead "实现完成"
    ↓
-Step 7: Lead 标记任务完成，分配下一任务
+Step 7: Lead 通知 Cunningham "Thompson 实现完成，请验证"
+   ↓
+Step 8: Cunningham 验证所有测试通过
+   ↓
+Step 9: Cunningham 通知 Lead "验证通过"
+   ↓
+Step 10: Lead 标记任务完成，分配下一任务
 ```
 
 **关键原则（硬性 TDD 约束）：**
@@ -1122,12 +1128,19 @@ Thompson 写实现 A（测试文件还不存在）
 正确流程（必须）：
 Cunningham 完成测试 A（RED 完成）
         ↓（顺序执行，不能并行）
-Lead 确认测试文件存在，分配给 Thompson
+Cunningham 通知 Lead "测试已完成"
+        ↓
+Lead 通知 Thompson "Cunningham 测试完成，请开始实现"
         ↓
 Thompson 编写实现 A（GREEN 阶段）
         ↓
 测试通过，任务完成
 ```
+
+**Lead 职责边界（协调不做技术）：**
+- ✅ Lead 转发消息："Cunningham 说测试已完成，Thompson 请开始实现"
+- ❌ Lead 不做：确认测试文件是否存在、检查测试是否通过、验证代码质量
+- 所有技术验证由 Cunningham 和 Thompson 自己完成
 
 **提升覆盖率（Navigator/Driver 模式）：**
 ```
@@ -1210,11 +1223,17 @@ Step 4: 重构（IMPROVE 阶段）
 
 ### 核心原则：Lead 是沟通桥梁，不是技术中介
 
-**Lead 的职责：**
-- ✅ 传递信息：将 Cunningham 的测试代码传递给 Thompson
-- ✅ 确认边界：确保 RED 阶段完成后再进入 GREEN 阶段
-- ✅ 跟踪进度：监控任务状态，及时分配下一任务
+**Lead 的职责（协调不做技术）：**
+- ✅ 传递信息：将 Cunningham 的通知转发给 Thompson（不检查技术内容）
+- ✅ 跟踪状态：监控 TaskList 任务状态（不是技术状态）
+- ✅ 分配任务：根据成员汇报决定下一步分配（不做技术判断）
 - ✅ 解决问题：处理团队协调问题，不解决技术问题
+
+**关键原则：Lead 只转发消息，不做任何技术确认**
+- ❌ 不确认测试是否通过
+- ❌ 不确认 RED/GREEN 状态
+- ❌ 不检查文件是否存在
+- ❌ 不验证代码质量
 
 **Lead 绝不：**
 - ❌ 解释技术方案（让 Cunningham 直接跟 Thompson 沟通）
@@ -1230,7 +1249,7 @@ Cunningham (编写测试代码)
          ↓
     SendMessage + 任务文件
          ↓
-    Lead (确认文件存在，转发给 Thompson)
+    Lead (转发消息给 Thompson，不做技术检查)
          ↓
     SendMessage + 任务文件
          ↓
@@ -1238,25 +1257,31 @@ Cunningham (编写测试代码)
          ↓
     SendMessage 完成报告
          ↓
-    Lead (确认完成，分配下一任务或请求 Cunningham 验证)
+    Lead (转发消息给 Cunningham 验证，不做技术判断)
 ```
 
-**Lead 的标准话术：**
+**Lead 的标准话术（只转发，不做技术指令）：**
 ```
-转发 Cunningham 的测试代码给 Thompson：
-"Thompson，Cunningham 已完成 [模块名] 的测试代码。
-测试文件：[文件路径]
-请执行 RED 阶段：运行测试确认失败，然后编写实现。"
+转发 Cunningham 的通知给 Thompson（只传递信息，不检查）：
+"Thompson，Cunningham 通知测试已完成。
+[附上 Cunningham 的原话或文件路径]
+请根据 Cunningham 的指示开始工作。"
 
-转发 Thompson 的完成报告给 Cunningham：
-"Cunningham，Thompson 已完成 [模块名] 的实现。
-实现文件：[文件路径]
-请验证所有测试是否通过。"
+转发 Thompson 的完成报告给 Cunningham（只传递信息，不验证）：
+"Cunningham，Thompson 通知实现已完成。
+[附上 Thompson 的原话或文件路径]
+请验证测试是否通过。"
 
 遇到技术问题时的回应：
 "这是技术实现问题，请 [Cunningham/Thompson] 直接沟通。
 我会协调流程，但不介入技术细节。"
 ```
+
+**严禁 Lead 说的话（涉及技术细节）：**
+- ❌ "请执行 RED 阶段：运行测试确认失败..."
+- ❌ "测试通过了，可以进入下一步..."
+- ❌ "代码有问题，需要修改..."
+- ❌ "文件不存在，请检查..."
 
 ### 沟通阻塞处理
 
